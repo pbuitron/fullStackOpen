@@ -1,0 +1,32 @@
+title Diagrama de Solicitud
+
+
+Cliente -> Servidor :HTTP GET https://studies.cs.helsinki.fi/exampleapp/notes;
+Servidor --> Cliente : text/html
+note Left of  Cliente : Inicia el proceso de carga sin renderización.
+Cliente -> Servidor : HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
+Servidor --> Cliente :text/css
+Cliente -> Servidor : HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.js
+Servidor --> Cliente : application/javascript
+Cliente -> Servidor :HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
+Servidor --> Cliente :application/json
+
+note left of Cliente : 
+inicia el renderizado con el archivo json y js.
+end note
+
+
+Cliente -> Servidor : HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note
+Servidor --> Cliente : 302 Found - Cambio de ruta /exampleapp/notes
+Cliente -> Servidor :HTTP GET https://studies.cs.helsinki.fi/exampleapp/notes;
+Servidor --> Cliente : text/html
+
+note left of  Cliente : 
+Se repite el proceso anterior.
+end note
+Cliente -> Servidor : HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
+Servidor --> Cliente :text/css
+Cliente -> Servidor : HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.js
+Servidor --> Cliente :application/javascript
+Cliente -> Servidor :HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
+Servidor --> Cliente :PUESTA application/json

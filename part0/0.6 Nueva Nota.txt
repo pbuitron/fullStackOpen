@@ -1,0 +1,14 @@
+actor Usuario
+
+Usuario -> Cliente: Abre el navegador web
+Cliente -> Servidor : Accede a la aplicación de notas SPA
+Servidor --> Cliente : Responde enviando HTML
+Cliente -> Cliente : Carga la interfaz de usuario para crear una nueva nota
+Usuario  -> Cliente: Decide crear una nueva nota
+Usuario -> Cliente: Escribe el contenido de la nota
+Usuario -> Cliente: Hace clic en el botón "Guardar"
+Cliente -> Servidor: Petición POST - Solicitud AJAX para crear una nueva nota
+Servidor --> Servidor: Almacena la nueva nota en la base de datos
+Servidor --> Cliente: HTTP GET - AJAX de confirmación
+Cliente -> Cliente: Actualiza la interfaz de usuario para reflejar la nueva nota
+Usuario -> Cliente: Continúa interactuando con la aplicación

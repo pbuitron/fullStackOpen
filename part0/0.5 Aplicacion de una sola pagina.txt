@@ -1,0 +1,24 @@
+title Diagrama de Solicitud
+
+
+actor Usuario
+
+participant  Cliente
+participant  Servidor
+
+
+
+Usuario -> Cliente: Abre el navegador
+Usuario -> Cliente: Ingreso de la URL
+Cliente -> Servidor: Solicitud al servidor
+Servidor --> Cliente: Respuesta del servidor
+Cliente --> Cliente: Descarga de recursos
+Cliente --> Cliente: Carga inicial de la aplicación SPA (REACT)
+Cliente -> Usuario: Interacción del usuario
+
+loop Mientras el usuario interactúe con la aplicación
+    Cliente -> Servidor: Solicitudes con AJAX
+    Servidor --> Cliente: Respuestas del servidor
+    Cliente --> Cliente: Actualización de la interfaz de usuario
+end
+Cliente -> Usuario: Navegación en la aplicación WEB
